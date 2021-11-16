@@ -7,11 +7,13 @@ const getData = async (url) => {
   return data;
 }
 
-const createHtml = (text) => {
-  return `<li>${text}</li>`;
+const createHtml = (quote) => {
+  return `<p>"${quote.quote}" - ${quote.by}</p> <img src="${quote.image}" alt="${quote.by}">`;
 }
 
 button.addEventListener('click', async () => {
-  const serverResponse = await getData('https://cat-fact.herokuapp.com/facts/random');
-  list.innerHTML = createHtml(serverResponse.text);
+  const serverQuoteList = await getData('https://finalspaceapi.com/api/v0/quote');
+  let quoteID = Math.floor(Math.random() * 51);
+  const quote = serverQuoteList[quoteID];
+  list.innerHTML = createHtml(quote);
 })
