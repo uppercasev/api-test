@@ -1,3 +1,5 @@
+const body = document.querySelector('body');
+body.style.textAlign = "center";
 const button = document.querySelector('#button');
 const list = document.querySelector('#list');
 
@@ -8,7 +10,8 @@ const getData = async (url) => {
 }
 
 const createHtml = (quote) => {
-  return `<p>"${quote.quote}" - ${quote.by}</p> <img src="${quote.image}" alt="${quote.by}">`;
+  return `<p>"${quote.quote}" - <i>${quote.by}</i></p>` +
+  `<img src="${quote.image}" onerror="this.onerror=null;this.src='No-Image.png'" alt="${quote.by}" width="300px">`;
 }
 
 button.addEventListener('click', async () => {
